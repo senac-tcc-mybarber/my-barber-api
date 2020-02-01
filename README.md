@@ -16,3 +16,11 @@ Para utilizar o JWT
 4) configure o Postman para realizar um POST para a URL "localhost:8080/authenticate" passando o json abaixo no Body com a opção "raw" selecionada.
     {"username": "customer", "password": "password"}
 5) execute a consulta e verifique o token retornado no header da requisição.
+
+## API CLIENTE
+GET /clientes = lista todos os clientes
+POST /clientes = adiciona novo cliente
+GET /clientes/{id} = pega cliente por id
+PUT /clientes/{id} = atualiza cliente
+DELETE /clientes/{id} = deleta cliente
+
