@@ -22,4 +22,8 @@ public class ServicoService {
     public Optional<Servico> findById(Long id){
         return servicorepository.findById(id);
     }
+
+    public List<Servico> findAllById(Iterable<Long> servicos) {
+        return servicorepository.findAllById(servicos);
+    }
 }
