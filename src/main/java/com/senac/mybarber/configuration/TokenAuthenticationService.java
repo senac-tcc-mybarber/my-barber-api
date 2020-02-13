@@ -1,11 +1,16 @@
 package com.senac.mybarber.configuration;
 
+import java.io.IOException;
 import java.util.Collections;
 import java.util.Date;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.google.gson.Gson;
+import com.senac.mybarber.model.Cliente;
+import com.senac.mybarber.model.Usuario;
 
 import io.jsonwebtoken.JwtBuilder;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -22,17 +27,30 @@ public class TokenAuthenticationService {
     static final String TOKEN_PREFIX = "Bearer ";
     static final String HEADER_STRING = "Authorization";
 
-    static void addAuthentication(HttpServletResponse response, String username) {
+    static void addAuthentication(HttpServletResponse response, String username) throws IOException {
+        Date tempoExpiracao = new Date(System.currentTimeMillis() + EXPIRATION_TIME);
+
         JwtBuilder builder = Jwts.builder();
         builder.setSubject(username);
-        builder.setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME));
+        builder.setExpiration(tempoExpiracao);
         builder.signWith(SignatureAlgorithm.HS512, SECRET);
         String JWT = builder
                 .compact();
 
+        Usuario usuario = new Usuario();
+        usuario.setLogin("login");
+        usuario.setTempoSessao(tempoExpiracao);
+        usuario.setPerfil("perfil");
+        usuario.setTokenJWT(JWT);
 
-//        response.addHeader(HEADER_STRING, TOKEN_PREFIX + JWT);
-        response.addCookie(new Cookie("TokenJWT", JWT));
+        String json = new Gson().toJson(usuario);
+        response.setContentType("application/json");
+        response.setCharacterEncoding("UTF-8");
+        response.getWriter().write(json);
+
+        //response.addHeader(HEADER_STRING, TOKEN_PREFIX + JWT);
+        // response.addCookie(new Cookie("TokenJWT", JWT));
+        
     }
 
     static Authentication getAuthentication(HttpServletRequest request) {
