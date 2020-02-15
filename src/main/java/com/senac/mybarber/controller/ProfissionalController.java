@@ -49,8 +49,15 @@ public class ProfissionalController {
     }
 
     @PutMapping(value="/{id}/servicos")
-    public ResponseEntity associate(@PathVariable("id") Long id, @RequestBody RequestAssociacao request) {
-        return service.associate(id, request.getServicos())
+    public ResponseEntity associarServico(@PathVariable("id") Long id, @RequestBody RequestAssociacao request) {
+        return service.associarServico(id, request.getServicos())
+                .map(record -> ResponseEntity.ok().body(record))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PutMapping(value="/{id}/saloes")
+    public ResponseEntity associarSalao(@PathVariable("id") Long id, @RequestBody RequestAssociacao request) {
+        return service.associarSalao(id, request.getServicos())
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
     }

@@ -1,3 +1,70 @@
-GET http://localhost:8080/test
-Authorization: Basic customer password
-##
+@token = {{auth.response.body.$.tokenJWT}}
+
+# @name  auth
+POST http://localhost:8080/authenticate
+
+{
+    "username":"customer",
+    "password":"password"
+}
+###
+
+GET http://localhost:8080/clientes
+Authorization: Bearer {{token}}
+###
+
+
+POST http://localhost:8080/cl
+ientes
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "telefone":"blabla",
+    "email":"blabla",
+    "senha":"blabla"
+}
+
+###
+
+
+
+GET http://localhost:8080/profissionais
+Authorization: Bearer {{token}}
+###
+
+
+
+POST http://localhost:8080/profissionais
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "nome":"blabla",
+    "telefone":"blabla",
+    "email":"blabla",
+    "senha":"blabla"
+}
+
+###
+
+GET http://localhost:8080/servicos
+Authorization: Bearer {{token}}
+Content-Type: application/json
+###
+
+PUT http://localhost:8080/profissionais/1/servicos
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "servicos":[1,2,3]
+}
+
+###
+
+
+GET http://localhost:8080/saloes/3
+Authorization: Bearer {{token}}
+Content-Type: application/json
+###

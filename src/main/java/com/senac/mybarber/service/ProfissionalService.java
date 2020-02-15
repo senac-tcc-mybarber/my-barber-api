@@ -19,6 +19,10 @@ public class ProfissionalService {
     @Autowired
     private ServicoService servicoService;
 
+    @Autowired
+    private SalaoService salaoService;
+
+
     public List<Profissional> findAll() {
         return repository.findAll();
     }
@@ -50,13 +54,23 @@ public class ProfissionalService {
                 });
     }
 
-    public Optional<Profissional> associate(Long id, List<Long> servicos) {
+    public Optional<Profissional> associarServico(Long id, List<Long> servicos) {
         return repository.findById(id)
                 .map(record -> {
 
                     Collection associacao = servicoService.findAllById(servicos);
 
                     record.setServicos(new HashSet<>( associacao));
+                    return repository.save(record);
+                });
+    }
+
+    public Optional<Profissional> associarSalao(Long id, List<Long> saloes) {
+        return repository.findById(id)
+                .map(record -> {
+                    Collection associacao = salaoService.findAllById(saloes);
+
+                    record.setSaloes(new HashSet<>(associacao));
                     return repository.save(record);
                 });
     }
