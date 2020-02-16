@@ -14,8 +14,7 @@ Authorization: Bearer {{token}}
 ###
 
 
-POST http://localhost:8080/cl
-ientes
+POST http://localhost:8080/clientes
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
@@ -34,6 +33,9 @@ Authorization: Bearer {{token}}
 ###
 
 
+GET http://localhost:8080/profissionais/1
+Authorization: Bearer {{token}}
+###
 
 POST http://localhost:8080/profissionais
 Authorization: Bearer {{token}}
@@ -57,14 +59,25 @@ PUT http://localhost:8080/profissionais/1/servicos
 Authorization: Bearer {{token}}
 Content-Type: application/json
 
-{
-    "servicos":[1,2,3]
-}
+{"servicos":[1,2,3]}
 
 ###
 
 
+GET http://localhost:8080/saloes
+Authorization: Bearer {{token}}
+Content-Type: application/json
+###
+
 GET http://localhost:8080/saloes/3
 Authorization: Bearer {{token}}
 Content-Type: application/json
+###
+
+
+PUT http://localhost:8080/profissionais/1/saloes
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{"saloes":[1,2]}
 ###

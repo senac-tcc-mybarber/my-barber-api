@@ -22,6 +22,6 @@ public class Profissional extends Pessoa{
 
     @ManyToMany
     @JoinTable(name="associacao_saloes")
-    private Set<Servico> saloes;
+    private Set<Salao> saloes;
 
 }

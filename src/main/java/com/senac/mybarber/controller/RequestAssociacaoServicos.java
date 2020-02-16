@@ -9,6 +9,6 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-public class RequestAssociacao {
+public class RequestAssociacaoServicos {
      private List<Long> servicos;
 }
