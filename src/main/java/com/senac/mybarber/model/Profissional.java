@@ -6,6 +6,7 @@ import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.HashSet;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -18,4 +19,9 @@ public class Profissional extends Pessoa{
     @ManyToMany
     @JoinTable(name="associacao_servicos")
     private Set<Servico> servicos;
+
+    @ManyToMany
+    @JoinTable(name="associacao_saloes")
+    private Set<Salao> saloes;
+
 }
