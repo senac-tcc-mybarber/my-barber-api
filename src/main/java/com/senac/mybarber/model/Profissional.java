@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @NoArgsConstructor
@@ -23,5 +24,9 @@ public class Profissional extends Pessoa{
     @ManyToMany
     @JoinTable(name="associacao_saloes")
     private Set<Salao> saloes;
+
+    @OneToMany
+    @JoinColumn(name="idProfissional")
+    private List<Agendamento> agendamentos;
 
 }
