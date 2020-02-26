@@ -1,5 +1,6 @@
 package com.senac.mybarber.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -36,8 +37,12 @@ public class Agendamento {
     @JoinColumn(name="idServico")
     private Servico servico;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     private Date inicioServico;
+
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy HH:mm")
     private Date fimServico;
+
     private Date checkInCliente;
     private Date checkInProfissional;
     private Date checkoutCliente;

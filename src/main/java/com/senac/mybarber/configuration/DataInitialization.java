@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
+import java.text.SimpleDateFormat;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
@@ -93,6 +94,9 @@ public class DataInitialization {
             agendamento.setProfissional(profissional);
             agendamento.setSalao(saloes.get(0));
             agendamento.setServico(servicos.get(0));
+            agendamento.setInicioServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 16:00"));
+            agendamento.setFimServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 16:30"));
+
             //agendamento.setIdCliente(cliente.getId());
             //agendamento.setIdProfissional(profissional.getId());
             //agendamento.setIdSalao(saloes.get(0).getId());
