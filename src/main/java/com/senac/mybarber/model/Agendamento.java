@@ -1,11 +1,13 @@
 package com.senac.mybarber.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Set;
 
 @AllArgsConstructor
 @NoArgsConstructor
@@ -15,10 +17,24 @@ public class Agendamento {
     @Id
     @GeneratedValue
     private long id;
-    private long idCliente;
-    private long idProfissional;
-    private long idSalao;
-    private long idServico;
+
+    @OneToOne
+    @JoinColumn(name="idCliente")
+    @JsonIgnoreProperties("agendamentos")
+    private Cliente cliente;
+
+    @OneToOne
+    @JoinColumn(name="idProfissional")
+    @JsonIgnoreProperties("agendamentos")
+    private Profissional profissional;
+
+    @OneToOne
+    @JoinColumn(name="idSalao")
+    private Salao salao;
+
+    @OneToOne
+    @JoinColumn(name="idServico")
+    private Servico servico;
 
     private Date inicioServico;
     private Date fimServico;

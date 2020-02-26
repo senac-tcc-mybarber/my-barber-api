@@ -1,5 +1,6 @@
 package com.senac.mybarber.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -12,9 +13,9 @@ import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
-@EqualsAndHashCode(callSuper = true)
 @Data
 @Entity
+@EqualsAndHashCode(callSuper = true,exclude = "agendamentos")
 public class Profissional extends Pessoa{
 
     @ManyToMany
@@ -27,6 +28,7 @@ public class Profissional extends Pessoa{
 
     @OneToMany
     @JoinColumn(name="idProfissional")
+    @JsonIgnoreProperties("profissional")
     private List<Agendamento> agendamentos;
 
 }

@@ -9,6 +9,7 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 
 @Configuration
@@ -88,10 +89,14 @@ public class DataInitialization {
 
             Agendamento agendamento = new Agendamento();
             agendamento.setId(1l);
-            agendamento.setIdCliente(cliente.getId());
-            agendamento.setIdProfissional(profissional.getId());
-            agendamento.setIdSalao(saloes.get(0).getId());
-            agendamento.setIdServico(servicos.get(0).getId());
+            agendamento.setCliente(cliente);
+            agendamento.setProfissional(profissional);
+            agendamento.setSalao(saloes.get(0));
+            agendamento.setServico(servicos.get(0));
+            //agendamento.setIdCliente(cliente.getId());
+            //agendamento.setIdProfissional(profissional.getId());
+            //agendamento.setIdSalao(saloes.get(0).getId());
+            //agendamento.setIdServico(servicos.get(0).getId());
             agendamentoRepository.save(agendamento);
         };
     }
