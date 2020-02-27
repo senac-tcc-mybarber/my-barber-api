@@ -10,8 +10,8 @@ import javax.persistence.*;
 import java.util.List;
 import java.util.Set;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @EqualsAndHashCode(callSuper = true,exclude = "agendamentos")
 @Data
 @Entity

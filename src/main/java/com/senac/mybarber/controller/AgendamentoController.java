@@ -1,5 +1,7 @@
 package com.senac.mybarber.controller;
 
+import java.util.List;
+
 import com.senac.mybarber.service.AgendamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +16,11 @@ public class AgendamentoController {
 
     @Autowired
     private AgendamentoService agendamentoService;
+
+    @GetMapping
+    public List findAll(){
+        return agendamentoService.findAll();
+    }
 
     @GetMapping(path = {"/{id}"})
     public ResponseEntity findById(@PathVariable Long id) {
