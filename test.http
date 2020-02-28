@@ -82,7 +82,26 @@ Content-Type: application/json
 {"saloes":[1,2]}
 ###
 
-GET http://localhost:8080/agendamentos
+GET http://localhost:8080/agendamentos/4
 Authorization: Bearer {{token}}
 Content-Type: application/json
+###
+
+POST http://localhost:8080/agendamentos
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+	"idCliente": 2,
+	"idProfissional": 2,
+	"idServicos": 2,
+	"idSaloes": 2,
+	"inicioServico": "01/03/2020 19:00",
+	"fimServico": "01/03/2020 19:30",
+	"checkInCliente": null,
+	"checkInProfissional": null,
+	"checkoutCliente": null,
+	"checkoutProfissional": null
+}
+
 ###

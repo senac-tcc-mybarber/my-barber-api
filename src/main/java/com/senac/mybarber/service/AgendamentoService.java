@@ -24,4 +24,8 @@ public class AgendamentoService {
     public List<Agendamento> findAllById(Iterable<Long> servicos) {
         return agendamentoRepository.findAllById(servicos);
     }
+
+    public Agendamento create(Agendamento agendamento){
+        return agendamentoRepository.save(agendamento);
+    }
 }
