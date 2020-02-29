@@ -1,5 +1,6 @@
 package com.senac.mybarber.controller;
 
+import com.senac.mybarber.model.Agendamento;
 import com.senac.mybarber.model.Cliente;
 import com.senac.mybarber.service.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,11 @@ public class ClienteController {
         return clienteservice.findById(id)
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping(path = {"/{id}/agendamentos"})
+    public List<Agendamento> findAllByCliente(@PathVariable Long id) {
+        return clienteservice.findById(id).get().getAgendamentos();
     }
 
     @PostMapping

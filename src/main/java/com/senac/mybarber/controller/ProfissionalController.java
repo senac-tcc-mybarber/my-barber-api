@@ -1,5 +1,6 @@
 package com.senac.mybarber.controller;
 
+import com.senac.mybarber.model.Agendamento;
 import com.senac.mybarber.model.Profissional;
 import com.senac.mybarber.service.ProfissionalService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,6 +26,11 @@ public class ProfissionalController {
         return service.findById(id)
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
+    }
+
+    @GetMapping(path = {"/{id}/agendamentos"})
+    public List<Agendamento> findAllByProfissional(@PathVariable Long id) {
+        return service.findById(id).get().getAgendamentos();
     }
 
     @PostMapping
