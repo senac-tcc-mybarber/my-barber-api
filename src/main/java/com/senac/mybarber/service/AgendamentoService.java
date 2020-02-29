@@ -1,15 +1,22 @@
 package com.senac.mybarber.service;
 
 import com.senac.mybarber.model.Agendamento;
+import com.senac.mybarber.model.StatusAgendamento;
 import com.senac.mybarber.model.TipoEntidadeOperacaoAgendamento;
 import com.senac.mybarber.model.TipoOperacaoAgendamento;
 import com.senac.mybarber.repository.AgendamentoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.nio.channels.FileChannel;
 import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
+
+import static com.senac.mybarber.model.StatusAgendamento.*;
+import static java.util.Objects.isNull;
+import static java.util.Objects.nonNull;
 
 @Service
 public class AgendamentoService {
@@ -32,41 +39,23 @@ public class AgendamentoService {
         return agendamentoRepository.save(agendamento);
     }
 
-    public Optional<Agendamento> update(Agendamento agendamento,
-                                        TipoEntidadeOperacaoAgendamento entidadeOperacaoAgendamento,
-                                        TipoOperacaoAgendamento operacaoAgendamento) {
 
-        Optional<Agendamento> forUpdate = agendamentoRepository.findById(agendamento.getId());
-        Optional<Agendamento> updated = null;
-
-        switch (entidadeOperacaoAgendamento) {
-            case CLIENTE:
-                if (operacaoAgendamento == TipoOperacaoAgendamento.CHECKIN) {
-                    updated = forUpdate.map(record -> {
-                        record.setCheckInCliente(new Date());
-                        return agendamentoRepository.save(record);
-                    });
-                } else {
-                    updated = forUpdate.map(record -> {
-                        record.setCheckOutCliente(new Date());
-                        return agendamentoRepository.save(record);
-                    });
-                }
-                break;
-            case PROFISSIONAL:
-                if (operacaoAgendamento == TipoOperacaoAgendamento.CHECKIN) {
-                    updated = forUpdate.map(record -> {
-                        record.setCheckInProfissional(new Date());
-                        return agendamentoRepository.save(record);
-                    });
-                } else {
-                    updated = forUpdate.map(record -> {
-                        record.setCheckOutProfissional(new Date());
-                        return agendamentoRepository.save(record);
-                    });
-                }
-        }
-
-        return updated;
+    public Optional<Agendamento> checkInProfissional(Long id) {
+        return agendamentoRepository.findById(id)
+                .map( record -> {
+                    record.checkInProfissional();
+                    return agendamentoRepository.save(record);
+            }
+        );
     }
+
+    public Optional<Agendamento> checkInCliente(Long id) {
+        return agendamentoRepository.findById(id)
+                .map( record -> {
+                    record.checkInCliente();
+                    return agendamentoRepository.save(record);
+                }
+        );
+    }
+
 }
