@@ -45,7 +45,7 @@ public class Agendamento {
 
     private Date checkInCliente;
     private Date checkInProfissional;
-    private Date checkoutCliente;
-    private Date checkoutProfissional;
+    private Date checkOutCliente;
+    private Date checkOutProfissional;
 }
 
