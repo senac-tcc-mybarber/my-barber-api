@@ -3,6 +3,8 @@ package com.senac.mybarber.controller;
 import java.util.List;
 
 import com.senac.mybarber.model.Agendamento;
+import com.senac.mybarber.model.TipoEntidadeOperacaoAgendamento;
+import com.senac.mybarber.model.TipoOperacaoAgendamento;
 import com.senac.mybarber.service.AgendamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -35,5 +37,41 @@ public class AgendamentoController {
     @PostMapping
     public Agendamento create(@RequestBody Agendamento agendamento){
         return agendamentoService.create(agendamento);
+    }
+
+    @PutMapping(path = {"/checkin/profissional"})
+    public ResponseEntity checkinProfissional(@RequestBody Agendamento agendamento) {
+        return agendamentoService.update(agendamento,
+                TipoEntidadeOperacaoAgendamento.PROFISSIONAL,
+                TipoOperacaoAgendamento.CHECKIN)
+                .map(record -> ResponseEntity.ok().body(record))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PutMapping(path = {"/checkin/cliente"})
+    public ResponseEntity checkinCliente(@RequestBody Agendamento agendamento) {
+        return agendamentoService.update(agendamento,
+                TipoEntidadeOperacaoAgendamento.CLIENTE,
+                TipoOperacaoAgendamento.CHECKIN)
+                .map(record -> ResponseEntity.ok().body(record))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PutMapping(path = {"/checkout/profissional"})
+    public ResponseEntity checkoutProfissional(@RequestBody Agendamento agendamento) {
+        return agendamentoService.update(agendamento,
+                TipoEntidadeOperacaoAgendamento.PROFISSIONAL,
+                TipoOperacaoAgendamento.CHECKOUT)
+                .map(record -> ResponseEntity.ok().body(record))
+                .orElse(ResponseEntity.notFound().build());
+    }
+
+    @PutMapping(path = {"/checkout/cliente"})
+    public ResponseEntity checkoutCliente(@RequestBody Agendamento agendamento) {
+        return agendamentoService.update(agendamento,
+                TipoEntidadeOperacaoAgendamento.CLIENTE,
+                TipoOperacaoAgendamento.CHECKOUT)
+                .map(record -> ResponseEntity.ok().body(record))
+                .orElse(ResponseEntity.notFound().build());
     }
 }
