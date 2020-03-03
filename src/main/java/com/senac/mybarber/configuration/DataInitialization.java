@@ -164,7 +164,35 @@ public class DataInitialization {
                         ag3.setInicioServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 16:00"));
                         ag3.setFimServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 16:30"));
 
-                        final List<Agendamento> agendamentos = Arrays.asList(ag1, ag2, ag3);
+                        final Agendamento ag4 = new Agendamento();
+                        ag4.setId(4l);
+                        ag4.setCliente(clientes.get(0));
+                        ag4.setProfissional(profissionais.get(2));
+                        ag4.setSalao(saloes.get(1));
+                        ag4.setServico(servicos.get(1));
+                        ag4.setInicioServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 17:00"));
+                        ag4.setFimServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 18:30"));
+
+                        final Agendamento ag5 = new Agendamento();
+                        ag5.setId(5l);
+                        ag5.setCliente(clientes.get(0));
+                        ag5.setProfissional(profissionais.get(3));
+                        ag5.setSalao(saloes.get(3));
+                        ag5.setServico(servicos.get(1));
+                        ag5.setInicioServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/07/2020 16:00"));
+                        ag5.setFimServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/07/2020 16:30"));
+
+                        final Agendamento ag6 = new Agendamento();
+                        ag6.setId(6l);
+                        ag6.setCliente(clientes.get(0));
+                        ag6.setProfissional(profissionais.get(1));
+                        ag6.setSalao(saloes.get(2));
+                        ag6.setServico(servicos.get(2));
+                        ag6.setInicioServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/020/2020 16:30"));
+                        ag6.setFimServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/20/2020 19:30"));
+
+
+                        final List<Agendamento> agendamentos = Arrays.asList(ag1, ag2, ag3, ag4, ag5, ag6);
 
                          servicoRepository.saveAll(servicos);
                          salaoRepository.saveAll(saloes);
