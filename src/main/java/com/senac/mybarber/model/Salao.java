@@ -23,6 +23,6 @@ public class Salao {
     private String cnpj;
     private String bairro;
     private String endereco;
-    private long coordenadaX;
-    private long coordenadaY;
+    private String coordenadaX;
+    private String coordenadaY;
 }

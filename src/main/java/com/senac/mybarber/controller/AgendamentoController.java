@@ -21,33 +21,33 @@ public class AgendamentoController {
     }
 
     @GetMapping(path = {"/{id}"})
-    public ResponseEntity findById(@PathVariable Long id) {
+    public ResponseEntity findById(@PathVariable final Long id) {
         return agendamentoService.findById(id)
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public Agendamento create(@RequestBody Agendamento agendamento){
+    public Agendamento create(@RequestBody final Agendamento agendamento){
         return agendamentoService.create(agendamento);
     }
 
     @PutMapping(path = {"/{id}/checkin-profissional"})
-    public ResponseEntity checkinProfissional(@PathVariable("id") Long id) {
+    public ResponseEntity checkinProfissional(@PathVariable("id") final Long id) {
         return agendamentoService.checkInProfissional(id)
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping(path = {"/{id}/checkin-cliente"})
-    public ResponseEntity checkinCliente(@PathVariable("id") Long id) {
+    public ResponseEntity checkinCliente(@PathVariable("id") final Long id) {
         return agendamentoService.checkInCliente(id)
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping(path = {"/{id}/finalizacao"})
-    public ResponseEntity checkoutCliente(@RequestBody Agendamento agendamento) {
-        return null; // TODO
+    public ResponseEntity checkoutCliente(@RequestBody final Agendamento agendamento) {
+        return null;
     }
 }

@@ -35,109 +35,109 @@ public class DataInitialization {
         InitializingBean carregaDados() {
                 return () -> {
 
-                        Servico s1 = new Servico(1l, "Depilacao");
-                        Servico s2 = new Servico(2l, "Manicure");
-                        Servico s3 = new Servico(3l, "Pedicure");
-                        Servico s4 = new Servico(5l, "Pintura de Cabelo");
-                        Servico s5 = new Servico(6l, "Escova Progressiva");
-                        Servico s6 = new Servico(7l, "Barba");
+                        final Servico s1 = new Servico(1l, "Depilacao", 10l);
+                        final Servico s2 = new Servico(2l, "Manicure", 20l);
+                        final Servico s3 = new Servico(3l, "Pedicure", 30l);
+                        final Servico s4 = new Servico(5l, "Pintura de Cabelo", 40l);
+                        final Servico s5 = new Servico(6l, "Escova Progressiva", 50l);
+                        final Servico s6 = new Servico(7l, "Barba", 60l);
 
-                        Salao sa1 = new Salao(1l, "Salao do Shopping", "62.408.761/0001-34", "Barra da Tijuca",
-                                        "Av das Americas 96975", 1, 2);
-                        Salao sa2 = new Salao(2l, "Salao do Centro", "45.298.705/0001-75", "Centro",
-                                        "Rua da Quitanda 35", 1, 2);
-                        Salao sa3 = new Salao(3l, "Salao dos Turistas", "33.366.825/0001-83", "Copacabana",
-                                        "Av Atlantica 342", 1, 2);
-                        Salao sa4 = new Salao(4l, "Salao da Lapa", "10.162.885/0001-78", "Centro", "Rua da Lapa 1", 1,
-                                        2);
+                        final Salao sa1 = new Salao(1l, "Salao do Shopping", "62.408.761/0001-34", "Barra da Tijuca",
+                                        "Av das Americas 96975", "1", "2");
+                        final Salao sa2 = new Salao(2l, "Salao do Centro", "45.298.705/0001-75", "Centro",
+                                        "Rua da Quitanda 35", "1", "2");
+                        final Salao sa3 = new Salao(3l, "Salao dos Turistas", "33.366.825/0001-83", "Copacabana",
+                                        "Av Atlantica 342", "1", "2");
+                        final Salao sa4 = new Salao(4l, "Salao da Lapa", "10.162.885/0001-78", "Centro",
+                                        "Rua da Lapa 1", "1", "2");
 
-                        Cliente cli1 = new Cliente();
+                        final Cliente cli1 = new Cliente();
                         cli1.setId(1l);
                         cli1.setNome("Jose da Silva");
                         cli1.setEmail("jose@gmail.com");
                         cli1.setTelefone("2199219384723948");
                         cli1.setSenha("1234");
 
-                        Cliente cli2 = new Cliente();
+                        final Cliente cli2 = new Cliente();
                         cli2.setId(2l);
                         cli2.setNome("Maria da Silva");
                         cli2.setEmail("maria@gmail.com");
                         cli2.setTelefone("2199219384723948");
                         cli2.setSenha("1234");
 
-                        Cliente cli3 = new Cliente();
+                        final Cliente cli3 = new Cliente();
                         cli3.setId(3l);
                         cli3.setNome("Luiz da Silva");
                         cli3.setEmail("luiz@gmail.com");
                         cli3.setTelefone("2199219384723948");
                         cli3.setSenha("1234");
 
-                        Profissional p1 = new Profissional();
+                        final Profissional p1 = new Profissional();
                         p1.setId(1l);
                         p1.setNome("Alucard da Silva");
                         p1.setEmail("alucard@gmail.com");
                         p1.setTelefone("123456789");
                         p1.setSenha("1234");
-                        Set<Servico> setServico1 = new HashSet();
+                        final Set<Servico> setServico1 = new HashSet();
                         setServico1.add(s1);
                         setServico1.add(s2);
                         p1.setServicos(setServico1);
-                        Set<Salao> setSalao1 = new HashSet();
+                        final Set<Salao> setSalao1 = new HashSet();
                         setSalao1.add(sa1);
                         setSalao1.add(sa2);
                         p1.setSaloes(setSalao1);
 
-                        Profissional p2 = new Profissional();
+                        final Profissional p2 = new Profissional();
                         p2.setId(2l);
                         p2.setNome("Jose Maria");
                         p2.setEmail("josemaria@gmail.com");
                         p2.setTelefone("123456789");
                         p2.setSenha("1234");
-                        Set<Servico> setServico2 = new HashSet();
+                        final Set<Servico> setServico2 = new HashSet();
                         setServico2.add(s3);
                         setServico2.add(s4);
                         p2.setServicos(setServico2);
-                        Set<Salao> setSalao2 = new HashSet();
+                        final Set<Salao> setSalao2 = new HashSet();
                         setSalao2.add(sa2);
                         setSalao2.add(sa3);
                         p2.setSaloes(setSalao2);
 
-                        Profissional p3 = new Profissional();
+                        final Profissional p3 = new Profissional();
                         p3.setId(3l);
                         p3.setNome("Alphonse Eric");
                         p3.setEmail("alphonse@gmail.com");
                         p3.setTelefone("123456789");
                         p3.setSenha("1234");
-                        Set<Servico> setServico3 = new HashSet();
+                        final Set<Servico> setServico3 = new HashSet();
                         setServico3.add(s5);
                         setServico3.add(s1);
                         p3.setServicos(setServico3);
-                        Set<Salao> setSalao3 = new HashSet();
+                        final Set<Salao> setSalao3 = new HashSet();
                         setSalao3.add(sa3);
                         setSalao3.add(sa4);
                         p3.setSaloes(setSalao3);
 
-                        Profissional p4 = new Profissional();
+                        final Profissional p4 = new Profissional();
                         p4.setId(4l);
                         p4.setNome("Dr. Mundo");
                         p4.setEmail("mundo@gmail.com");
                         p4.setTelefone("123456789");
                         p4.setSenha("1234");
-                        Set<Servico> setServico4 = new HashSet();
+                        final Set<Servico> setServico4 = new HashSet();
                         setServico4.add(s4);
                         setServico4.add(s2);
                         p4.setServicos(setServico4);
-                        Set<Salao> setSalao4 = new HashSet();
+                        final Set<Salao> setSalao4 = new HashSet();
                         setSalao4.add(sa4);
                         setSalao4.add(sa1);
                         p4.setSaloes(setSalao4);
 
-                        List<Servico> servicos = Arrays.asList(s1, s2, s3, s4, s5, s6);
-                        List<Salao> saloes = Arrays.asList(sa1, sa2, sa3, sa4);
-                        List<Cliente> clientes = Arrays.asList(cli1, cli2, cli3);
-                        List<Profissional> profissionais = Arrays.asList(p1, p2, p3, p4);
+                        final List<Servico> servicos = Arrays.asList(s1, s2, s3, s4, s5, s6);
+                        final List<Salao> saloes = Arrays.asList(sa1, sa2, sa3, sa4);
+                        final List<Cliente> clientes = Arrays.asList(cli1, cli2, cli3);
+                        final List<Profissional> profissionais = Arrays.asList(p1, p2, p3, p4);
 
-                        Agendamento ag1 = new Agendamento();
+                        final Agendamento ag1 = new Agendamento();
                         ag1.setId(1l);
                         ag1.setCliente(clientes.get(1));
                         ag1.setProfissional(profissionais.get(1));
@@ -145,8 +145,8 @@ public class DataInitialization {
                         ag1.setServico(servicos.get(1));
                         ag1.setInicioServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 16:00"));
                         ag1.setFimServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 16:30"));
-                        
-                        Agendamento ag2 = new Agendamento();
+
+                        final Agendamento ag2 = new Agendamento();
                         ag2.setId(2l);
                         ag2.setCliente(clientes.get(2));
                         ag2.setProfissional(profissionais.get(2));
@@ -155,7 +155,7 @@ public class DataInitialization {
                         ag2.setInicioServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 16:00"));
                         ag2.setFimServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 16:30"));
 
-                        Agendamento ag3 = new Agendamento();
+                        final Agendamento ag3 = new Agendamento();
                         ag3.setId(3l);
                         ag3.setCliente(clientes.get(0));
                         ag3.setProfissional(profissionais.get(3));
@@ -164,7 +164,7 @@ public class DataInitialization {
                         ag3.setInicioServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 16:00"));
                         ag3.setFimServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 16:30"));
 
-                        List<Agendamento> agendamentos = Arrays.asList(ag1, ag2, ag3);
+                        final List<Agendamento> agendamentos = Arrays.asList(ag1, ag2, ag3);
 
                          servicoRepository.saveAll(servicos);
                          salaoRepository.saveAll(saloes);
