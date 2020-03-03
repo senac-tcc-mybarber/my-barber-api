@@ -1,5 +1,6 @@
 package com.senac.mybarber.configuration;
 
+import com.senac.mybarber.service.CustomUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -17,14 +18,17 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 @Order(1)
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
-    
-    @Autowired
-    private PasswordEncoder encoder;
-     
+
     @Bean
     public PasswordEncoder getEncoder() {
         return new BCryptPasswordEncoder();
     }
+
+    @Autowired
+    public CustomUserDetailsService userDetailsService;
+
+    @Autowired
+    private TokenAuthenticationService tokenAuthenticationService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -35,11 +39,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .and()
 
                 // filtra requisições de login
-                .addFilterBefore(new JWTLoginFilter("/authenticate", authenticationManager()),
+                .addFilterBefore(new JWTLoginFilter("/authenticate", authenticationManager(), tokenAuthenticationService),
                         UsernamePasswordAuthenticationFilter.class)
 
                 // filtra outras requisições para verificar a presença do JWT no header
-                .addFilterBefore(new JWTAuthenticationFilter(),
+                .addFilterBefore(new JWTAuthenticationFilter(tokenAuthenticationService),
                         UsernamePasswordAuthenticationFilter.class);
     }
 
@@ -47,12 +51,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     // provisorio, ate que o JWT esteja funcional
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-        // cria uma conta default
-        auth.inMemoryAuthentication()
-                .withUser("customer")
-                .password(encoder.encode("password"))
-                .roles("CUSTOMER")
-                .and()
-                .withUser("professional").password(encoder.encode("password")).roles("PROFESSIONAL");
+        auth.userDetailsService(userDetailsService);
     }
 }

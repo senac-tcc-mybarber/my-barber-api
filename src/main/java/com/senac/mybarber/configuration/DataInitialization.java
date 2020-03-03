@@ -6,6 +6,7 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.text.SimpleDateFormat;
 import java.util.Arrays;
@@ -31,9 +32,13 @@ public class DataInitialization {
         @Autowired
         private AgendamentoRepository agendamentoRepository;
 
+        @Autowired
+        private PasswordEncoder passwordEncoder;
+
         @Bean
         InitializingBean carregaDados() {
                 return () -> {
+                        long id = 1;
 
                         final Servico s1 = new Servico(1l, "Depilacao", 10l);
                         final Servico s2 = new Servico(2l, "Manicure", 20l);
@@ -52,32 +57,36 @@ public class DataInitialization {
                                         "Rua da Lapa 1", "1", "2");
 
                         final Cliente cli1 = new Cliente();
-                        cli1.setId(1l);
+                        cli1.setId(id++);
+                        cli1.setUsername("username1");
                         cli1.setNome("Jose da Silva");
                         cli1.setEmail("jose@gmail.com");
                         cli1.setTelefone("2199219384723948");
-                        cli1.setSenha("1234");
+                        cli1.setSenha(passwordEncoder.encode("1234"));
 
                         final Cliente cli2 = new Cliente();
-                        cli2.setId(2l);
+                        cli2.setId(id++);
+                        cli2.setUsername("username2");
                         cli2.setNome("Maria da Silva");
                         cli2.setEmail("maria@gmail.com");
                         cli2.setTelefone("2199219384723948");
-                        cli2.setSenha("1234");
+                        cli2.setSenha(passwordEncoder.encode("1234"));
 
                         final Cliente cli3 = new Cliente();
-                        cli3.setId(3l);
+                        cli3.setId(id++);
+                        cli3.setUsername("username3");
                         cli3.setNome("Luiz da Silva");
                         cli3.setEmail("luiz@gmail.com");
                         cli3.setTelefone("2199219384723948");
-                        cli3.setSenha("1234");
+                        cli3.setSenha(passwordEncoder.encode("1234"));
 
                         final Profissional p1 = new Profissional();
-                        p1.setId(1l);
+                        p1.setId(id++);
+                        p1.setUsername("username4");
                         p1.setNome("Alucard da Silva");
                         p1.setEmail("alucard@gmail.com");
                         p1.setTelefone("123456789");
-                        p1.setSenha("1234");
+                        p1.setSenha(passwordEncoder.encode("1234"));
                         final Set<Servico> setServico1 = new HashSet();
                         setServico1.add(s1);
                         setServico1.add(s2);
@@ -88,11 +97,12 @@ public class DataInitialization {
                         p1.setSaloes(setSalao1);
 
                         final Profissional p2 = new Profissional();
-                        p2.setId(2l);
+                        p2.setId(id++);
+                        p2.setUsername("username5");
                         p2.setNome("Jose Maria");
                         p2.setEmail("josemaria@gmail.com");
                         p2.setTelefone("123456789");
-                        p2.setSenha("1234");
+                        p2.setSenha(passwordEncoder.encode("1234"));
                         final Set<Servico> setServico2 = new HashSet();
                         setServico2.add(s3);
                         setServico2.add(s4);
@@ -103,11 +113,12 @@ public class DataInitialization {
                         p2.setSaloes(setSalao2);
 
                         final Profissional p3 = new Profissional();
-                        p3.setId(3l);
+                        p3.setId(id++);
+                        p3.setUsername("username6");
                         p3.setNome("Alphonse Eric");
                         p3.setEmail("alphonse@gmail.com");
                         p3.setTelefone("123456789");
-                        p3.setSenha("1234");
+                        p3.setSenha(passwordEncoder.encode("1234"));
                         final Set<Servico> setServico3 = new HashSet();
                         setServico3.add(s5);
                         setServico3.add(s1);
@@ -118,11 +129,12 @@ public class DataInitialization {
                         p3.setSaloes(setSalao3);
 
                         final Profissional p4 = new Profissional();
-                        p4.setId(4l);
+                        p4.setId(id++);
+                        p4.setUsername("username7");
                         p4.setNome("Dr. Mundo");
                         p4.setEmail("mundo@gmail.com");
                         p4.setTelefone("123456789");
-                        p4.setSenha("1234");
+                        p4.setSenha(passwordEncoder.encode("1234"));
                         final Set<Servico> setServico4 = new HashSet();
                         setServico4.add(s4);
                         setServico4.add(s2);
