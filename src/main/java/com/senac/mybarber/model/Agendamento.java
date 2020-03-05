@@ -22,17 +22,17 @@ public class Agendamento {
     @GeneratedValue
     private long id;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="idCliente")
     @JsonIgnoreProperties("agendamentos")
     private Cliente cliente;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="idProfissional")
     @JsonIgnoreProperties("agendamentos")
     private Profissional profissional;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name="idSalao")
     private Salao salao;
 

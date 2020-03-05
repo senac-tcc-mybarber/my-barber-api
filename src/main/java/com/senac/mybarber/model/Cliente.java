@@ -17,8 +17,7 @@ import java.util.Set;
 @Entity
 public class Cliente extends Pessoa {
 
-    @OneToMany
-    @JoinColumn(name="idCliente")
+    @OneToMany(mappedBy = "cliente")
     @JsonIgnoreProperties("cliente")
     private List<Agendamento> agendamentos;
 }

@@ -19,5 +19,5 @@ public class Servico{
     private Long id;
 
     private String nome;
-    
+    private Long valor;
 }

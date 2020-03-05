@@ -26,8 +26,7 @@ public class Profissional extends Pessoa{
     @JoinTable(name="associacao_saloes")
     private Set<Salao> saloes;
 
-    @OneToMany
-    @JoinColumn(name="idProfissional")
+    @OneToMany(mappedBy = "profissional")
     @JsonIgnoreProperties("profissional")
     private List<Agendamento> agendamentos;
 

@@ -3,6 +3,7 @@ package com.senac.mybarber.service;
 import com.senac.mybarber.model.Cliente;
 import com.senac.mybarber.repository.ClienteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.HashMap;
@@ -16,6 +17,9 @@ public class ClienteService {
     @Autowired
     private ClienteRepository clienterepository;
 
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
     public List<Cliente> findAll(){
         return clienterepository.findAll();
     }
@@ -25,6 +29,9 @@ public class ClienteService {
     }
 
     public Cliente create(Cliente cliente){
+        String encodedPassword = passwordEncoder.encode(cliente.getSenha());
+        cliente.setSenha(encodedPassword);
+
         return clienterepository.save(cliente);
     }
 

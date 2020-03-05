@@ -3,6 +3,7 @@ package com.senac.mybarber.service;
 import com.senac.mybarber.model.Profissional;
 import com.senac.mybarber.repository.ProfissionalRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -22,6 +23,7 @@ public class ProfissionalService {
     @Autowired
     private SalaoService salaoService;
 
+    private PasswordEncoder passwordEncoder;
 
     public List<Profissional> findAll() {
         return repository.findAll();
@@ -32,6 +34,9 @@ public class ProfissionalService {
     }
 
     public Profissional create(Profissional profissional) {
+        String encodedPassword = passwordEncoder.encode(profissional.getSenha());
+        profissional.setSenha(encodedPassword);
+
         return repository.save(profissional);
     }
 
