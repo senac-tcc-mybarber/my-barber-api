@@ -1,5 +1,6 @@
 package com.senac.mybarber.controller;
 
+import com.senac.mybarber.model.Servico;
 import com.senac.mybarber.service.ServicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -15,12 +16,12 @@ public class ServicoController {
     private ServicoService servicoservice;
 
     @GetMapping
-    public List findAll(){
+    public List<Servico> findAll(){
         return servicoservice.findAll();
     }
 
     @GetMapping(path = {"/{id}"})
-    public ResponseEntity findById(@PathVariable Long id){
+    public ResponseEntity<Servico> findById(@PathVariable Long id){
         return servicoservice.findById(id)
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());

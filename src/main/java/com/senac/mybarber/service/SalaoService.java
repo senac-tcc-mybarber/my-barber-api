@@ -23,7 +23,7 @@ public class SalaoService {
         return salaoRepository.findById(id);
     }
 
-    public List findAll() {
+    public List<Salao> findAll() {
         return salaoRepository.findAll();
     }
 }

@@ -17,12 +17,12 @@ public class ProfissionalController {
     private ProfissionalService service;
 
     @GetMapping
-    public List findAll(){
+    public List<Profissional> findAll(){
         return service.findAll();
     }
 
     @GetMapping(path = {"/{id}"})
-    public ResponseEntity findById(@PathVariable Long id){
+    public ResponseEntity<Profissional> findById(@PathVariable Long id){
         return service.findById(id)
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
@@ -39,7 +39,7 @@ public class ProfissionalController {
     }
 
     @PutMapping(value="/{id}")
-    public ResponseEntity update(@PathVariable("id") Long id, @RequestBody Profissional profissional) {
+    public ResponseEntity<Profissional> update(@PathVariable("id") Long id, @RequestBody Profissional profissional) {
         return service.update(id, profissional)
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
@@ -55,14 +55,14 @@ public class ProfissionalController {
     }
 
     @PutMapping(value="/{id}/servicos")
-    public ResponseEntity associarServico(@PathVariable("id") Long id, @RequestBody RequestAssociacaoServicos request) {
+    public ResponseEntity<Profissional> associarServico(@PathVariable("id") Long id, @RequestBody RequestAssociacaoServicos request) {
         return service.associarServico(id, request.getServicos())
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
     }
 
     @PutMapping(value="/{id}/saloes")
-    public ResponseEntity associarSalao(@PathVariable("id") Long id, @RequestBody RequestAssociacaoSaloes request) {
+    public ResponseEntity<Profissional> associarSalao(@PathVariable("id") Long id, @RequestBody RequestAssociacaoSaloes request) {
         return service.associarSalao(id, request.getSaloes())
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());

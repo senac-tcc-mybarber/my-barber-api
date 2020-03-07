@@ -6,6 +6,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 
 public class UserPrincipal implements UserDetails {
+    /**
+     *
+     */
+    private static final long serialVersionUID = 244941524868409583L;
     private Pessoa user;
  
     public UserPrincipal(Pessoa user) {

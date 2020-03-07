@@ -1,15 +1,14 @@
 package com.senac.mybarber.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import com.senac.mybarber.model.Cliente;
 import com.senac.mybarber.repository.ClienteRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
 
 @Service
 public class ClienteService {
