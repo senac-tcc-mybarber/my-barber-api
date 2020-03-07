@@ -33,6 +33,7 @@ dependencies {
 	implementation 'com.google.code.gson:gson:2.8.6'
 	compileOnly 'org.projectlombok:lombok'
 	compile 'javax.json:javax.json-api:1.0'
+	
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.h2database:h2'
 	runtimeOnly 'mysql:mysql-connector-java'
@@ -40,6 +41,11 @@ dependencies {
 	testImplementation('org.springframework.boot:spring-boot-starter-test') {
 		exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
 	}
+	testImplementation('info.cukes:cucumber-java:1.2.6')
+	testImplementation('info.cukes:cucumber-junit:1.2.6')
+	testImplementation('info.cukes:gherkin:2.12.2')
+	testImplementation('org.seleniumhq.selenium:selenium-java:3.141.59')
+	testImplementation('org.seleniumhq.selenium:selenium-chrome-driver:3.141.59')	
 }
 
 test {
