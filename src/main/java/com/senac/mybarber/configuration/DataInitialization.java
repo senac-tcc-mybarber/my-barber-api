@@ -155,8 +155,9 @@ public class DataInitialization {
                         ag1.setProfissional(profissionais.get(1));
                         ag1.setSalao(saloes.get(1));
                         ag1.setServico(servicos.get(1));
-                        ag1.setInicioServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 16:00"));
-                        ag1.setFimServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 16:30"));
+                        ag1.setInicioServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("13/03/2020 16:00"));
+                        ag1.setFimServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("13/03/2020 16:30"));
+                        ag1.setStatus(StatusAgendamento.AGENDADO);
 
                         final Agendamento ag2 = new Agendamento();
                         ag2.setId(2l);
@@ -166,6 +167,7 @@ public class DataInitialization {
                         ag2.setServico(servicos.get(2));
                         ag2.setInicioServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 16:00"));
                         ag2.setFimServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 16:30"));
+                        ag2.setStatus(StatusAgendamento.AGUARDANDO_CLIENTE);
 
                         final Agendamento ag3 = new Agendamento();
                         ag3.setId(3l);
@@ -175,6 +177,8 @@ public class DataInitialization {
                         ag3.setServico(servicos.get(3));
                         ag3.setInicioServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 16:00"));
                         ag3.setFimServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 16:30"));
+                        ag3.setStatus(StatusAgendamento.AGUARDANDO_PROFISSIONAL);
+
 
                         final Agendamento ag4 = new Agendamento();
                         ag4.setId(4l);
@@ -184,6 +188,8 @@ public class DataInitialization {
                         ag4.setServico(servicos.get(1));
                         ag4.setInicioServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 17:00"));
                         ag4.setFimServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/03/2020 18:30"));
+                        ag4.setStatus(StatusAgendamento.CANCELADO);
+
 
                         final Agendamento ag5 = new Agendamento();
                         ag5.setId(5l);
@@ -193,6 +199,8 @@ public class DataInitialization {
                         ag5.setServico(servicos.get(1));
                         ag5.setInicioServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/07/2020 16:00"));
                         ag5.setFimServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/07/2020 16:30"));
+                        ag5.setStatus(StatusAgendamento.CONCLUIDO);
+
 
                         final Agendamento ag6 = new Agendamento();
                         ag6.setId(6l);
@@ -202,6 +210,7 @@ public class DataInitialization {
                         ag6.setServico(servicos.get(2));
                         ag6.setInicioServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/020/2020 16:30"));
                         ag6.setFimServico(new SimpleDateFormat("dd/MM/yyyy HH:mm").parse("01/20/2020 19:30"));
+                        ag6.setStatus(StatusAgendamento.EM_ANDAMENTO);
 
 
                         final List<Agendamento> agendamentos = Arrays.asList(ag1, ag2, ag3, ag4, ag5, ag6);
