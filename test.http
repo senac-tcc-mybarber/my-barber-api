@@ -92,24 +92,20 @@ Authorization: Bearer {{token}}
 Content-Type: application/json
 
 {
-	"cliente": {
-        "id": 1
-    },
-    "profissional": {
-        "id": 1
-    },
-    "salao": {
-        "id": 1
-    },
-    "servico": {
-        "id": 1
-    },
-	"inicioServico": "01/03/2020 19:00",
-	"fimServico": "01/03/2020 19:30",
-	"checkInCliente": null,
-	"checkInProfissional": null,
-	"checkoutCliente": null,
-	"checkoutProfissional": null
+   "cliente":{
+      "id":1
+   },
+   "profissional":{
+      "id":4
+   },
+   "salao":{
+      "id":1
+   },
+   "servico":{
+      "id":2
+   },
+   "inicioServico":"12/03/2020 09:00",
+   "fimServico":"12/03/2020 10:00"
 }
 
 ###

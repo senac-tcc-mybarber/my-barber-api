@@ -1,6 +1,7 @@
 package com.senac.mybarber.controller;
 
 import com.senac.mybarber.model.Agendamento;
+import com.senac.mybarber.model.StatusAgendamento;
 import com.senac.mybarber.service.AgendamentoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -29,6 +30,7 @@ public class AgendamentoController {
 
     @PostMapping
     public Agendamento create(@RequestBody final Agendamento agendamento){
+        agendamento.setStatus(StatusAgendamento.AGENDADO);
         return agendamentoService.create(agendamento);
     }
 
