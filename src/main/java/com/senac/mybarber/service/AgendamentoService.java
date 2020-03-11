@@ -23,11 +23,11 @@ public class AgendamentoService {
     @Autowired
     private AgendamentoRepository agendamentoRepository;
 
-    public List<Agendamento> findAll(){
+    public List<Agendamento> findAll() {
         return agendamentoRepository.findAll();
     }
 
-    public Optional<Agendamento> findById(Long id){
+    public Optional<Agendamento> findById(Long id) {
         return agendamentoRepository.findById(id);
     }
 
@@ -35,27 +35,39 @@ public class AgendamentoService {
         return agendamentoRepository.findAllById(servicos);
     }
 
-    public Agendamento create(Agendamento agendamento){
+    public Agendamento create(Agendamento agendamento) {
         return agendamentoRepository.save(agendamento);
     }
 
+    public Agendamento update(Agendamento agendamentoInicial) {
+
+        Optional<Agendamento> optionalAgendamento = agendamentoRepository.findById(agendamentoInicial.getId());
+
+        if (optionalAgendamento.isPresent())
+        {
+            Agendamento agNovo = optionalAgendamento.get();
+            agNovo.setInicioServico(agendamentoInicial.getInicioServico());
+            agNovo.setFimServico(agendamentoInicial.getFimServico());
+            agNovo.setStatus(agendamentoInicial.getStatus());
+
+            return agendamentoRepository.save(agNovo);
+        }
+        else
+            return null;
+    }
 
     public Optional<Agendamento> checkInProfissional(Long id) {
-        return agendamentoRepository.findById(id)
-                .map( record -> {
-                    record.checkInProfissional();
-                    return agendamentoRepository.save(record);
-            }
-        );
+        return agendamentoRepository.findById(id).map(record -> {
+            record.checkInProfissional();
+            return agendamentoRepository.save(record);
+        });
     }
 
     public Optional<Agendamento> checkInCliente(Long id) {
-        return agendamentoRepository.findById(id)
-                .map( record -> {
-                    record.checkInCliente();
-                    return agendamentoRepository.save(record);
-                }
-        );
+        return agendamentoRepository.findById(id).map(record -> {
+            record.checkInCliente();
+            return agendamentoRepository.save(record);
+        });
     }
 
 }

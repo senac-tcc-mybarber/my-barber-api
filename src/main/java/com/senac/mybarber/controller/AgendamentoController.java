@@ -32,6 +32,11 @@ public class AgendamentoController {
         return agendamentoService.create(agendamento);
     }
 
+    @PutMapping
+    public Agendamento update(@RequestBody final Agendamento agendamento){
+        return agendamentoService.update(agendamento);
+    }
+
     @PutMapping(path = {"/{id}/checkin-profissional"})
     public ResponseEntity checkinProfissional(@PathVariable("id") final Long id) {
         return agendamentoService.checkInProfissional(id)

@@ -82,7 +82,7 @@ Content-Type: application/json
 {"saloes":[1,2]}
 ###
 
-GET http://localhost:8080/agendamentos/5
+GET http://localhost:8080/agendamentos/3
 Authorization: Bearer {{token}}
 Content-Type: application/json
 ###
@@ -113,3 +113,14 @@ Content-Type: application/json
 }
 
 ###
+
+PUT http://localhost:8080/agendamentos
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "id": 1,
+  "inicioServico": "20/03/2090 19:00",
+  "fimServico": "20/03/2090 19:30",
+  "status": "AGENDADO"
+}
