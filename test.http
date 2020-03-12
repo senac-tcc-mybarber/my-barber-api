@@ -82,7 +82,7 @@ Content-Type: application/json
 {"saloes":[1,2]}
 ###
 
-GET http://localhost:8080/agendamentos/3
+GET http://localhost:8080/agendamentos/
 Authorization: Bearer {{token}}
 Content-Type: application/json
 ###
