@@ -23,7 +23,11 @@ public class AgendamentoService {
     @Autowired
     private AgendamentoRepository agendamentoRepository;
 
-    public List<Agendamento> findAll(){
+    public AgendamentoService(AgendamentoRepository repository) {
+        agendamentoRepository = repository;
+	}
+
+	public List<Agendamento> findAll(){
         return agendamentoRepository.findAll();
     }
 
