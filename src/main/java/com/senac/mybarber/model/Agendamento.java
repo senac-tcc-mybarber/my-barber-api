@@ -2,15 +2,16 @@ package com.senac.mybarber.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.Set;
 
 import static com.senac.mybarber.model.StatusAgendamento.*;
 import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
 import static lombok.AccessLevel.PRIVATE;
 
 @AllArgsConstructor
@@ -74,7 +75,7 @@ public class Agendamento {
             checkInProfissional = new Date();
         }
 
-        if (status == AGUARDANDO_CLIENTE) {
+        if (status == AGUARDANDO_PROFISSIONAL) {
             status = EM_ANDAMENTO;
         } else {
             status = AGUARDANDO_CLIENTE;
