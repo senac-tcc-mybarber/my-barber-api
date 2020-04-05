@@ -23,4 +23,21 @@ class AgendamentoTest {
 
         assertEquals(StatusAgendamento.EM_ANDAMENTO, agendamento.getStatus());
     }
+
+    @Test
+    public void checkIn_cliente_sem_profissional() {
+        Agendamento agendamento = new Agendamento();
+        agendamento.checkInCliente();
+
+        assertEquals(StatusAgendamento.AGUARDANDO_PROFISSIONAL, agendamento.getStatus());
+    }
+
+    @Test
+    public void checkIn_cliente_com_profissional() {
+        Agendamento agendamento = new Agendamento();
+        agendamento.checkInProfissional();
+        agendamento.checkInCliente();
+
+        assertEquals(StatusAgendamento.EM_ANDAMENTO, agendamento.getStatus());
+    }
 }
