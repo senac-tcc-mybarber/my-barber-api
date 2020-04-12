@@ -3,9 +3,11 @@ name: Java CI
 on: [push]
 
 jobs:
-  build:
-
-    runs-on: ubuntu-latest
+  gradle:
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macos-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
 
     steps:
     - uses: actions/checkout@v1
