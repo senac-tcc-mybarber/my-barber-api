@@ -1,7 +1,7 @@
 name: Test latest Gradle RC
-on:
-  schedule:
-    - cron: 0 0 * * * # daily
+
+on: [push]
+
 jobs:
   gradle-rc:
     runs-on: ubuntu-latest
