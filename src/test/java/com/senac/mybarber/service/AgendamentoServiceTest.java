@@ -48,7 +48,7 @@ class AgendamentoServiceTest {
 
         Optional<Agendamento> agendamentoOptional = Optional.of(agendamento);
 
-        when(service.findById(1L)).thenReturn(agendamentoOptional);
+        when(service.findById(13L)).thenReturn(agendamentoOptional);
         assertEquals(service.findById(1L), agendamentoOptional);
     }
 
