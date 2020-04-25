@@ -4,8 +4,8 @@
 POST http://localhost:8080/authenticate
 
 {
-    "username":"customer",
-    "password":"password"
+    "username":"username1",
+    "password":"1234"
 }
 ###
 
