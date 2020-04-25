@@ -1,6 +1,10 @@
 package com.senac.mybarber.service;
 
 import com.senac.mybarber.model.Agendamento;
+import com.senac.mybarber.model.Cliente;
+import com.senac.mybarber.model.Profissional;
+import com.senac.mybarber.model.Salao;
+import com.senac.mybarber.model.Servico;
 import com.senac.mybarber.model.StatusAgendamento;
 import com.senac.mybarber.repository.AgendamentoRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -95,13 +99,33 @@ class AgendamentoServiceTest {
 
     @Test
     public void teste_metodo_create_agendamento() {
+
+        Cliente cliente = new Cliente();
+        Servico servico = new Servico();
+        Profissional profissional = new Profissional();
+        Salao salao = new Salao();
         Agendamento agendamento = new Agendamento();
+
+        cliente.setId(1L);
+        servico.setId(1L);
+        profissional.setId(1L);
+        salao.setId(1L);
+
         agendamento.setId(1L);
+        agendamento.setCliente(cliente);
+        agendamento.setServico(servico);
+        agendamento.setProfissional(profissional);
+        agendamento.setSalao(salao);
         agendamento.setInicioServico(new Date());
         agendamento.setFimServico(new Date());
         agendamento.setStatus(StatusAgendamento.AGENDADO);
 
-        when(service.create(agendamento)).thenReturn(agendamento);
-        assertEquals(service.create(agendamento), agendamento);
+        when(repository.save(any(Agendamento.class))).then(
+                invocation -> invocation.getArgument(0)
+        );
+
+        Agendamento agendamentoRetorno = service.create(agendamento);
+
+        assertEquals(agendamentoRetorno, agendamento);
     }
 }
