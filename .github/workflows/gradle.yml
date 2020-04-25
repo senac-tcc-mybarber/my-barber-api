@@ -13,4 +13,5 @@ jobs:
         with:
           java-version: 1.8
       - name: Build with Gradle
+        # O comando abaixo builda e testa (Junit) a aplicação
         run: ./gradlew build
