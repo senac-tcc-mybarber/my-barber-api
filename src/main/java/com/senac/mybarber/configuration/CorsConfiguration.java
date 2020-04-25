@@ -1,5 +1,7 @@
 package com.senac.mybarber.configuration;
 
+import javax.servlet.Filter;
+
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +15,7 @@ import org.springframework.web.filter.CorsFilter;
 public class CorsConfiguration {
 
     @Bean
-    public FilterRegistrationBean filterRegistrationBean() {
+    public FilterRegistrationBean<Filter> filterRegistrationBean() {
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 
@@ -24,7 +26,7 @@ public class CorsConfiguration {
         config.addAllowedMethod("*");
         source.registerCorsConfiguration("/**", config);
 
-        FilterRegistrationBean bean = new FilterRegistrationBean(new CorsFilter(source));
+        FilterRegistrationBean<Filter> bean = new FilterRegistrationBean<Filter>(new CorsFilter(source));
         bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
         return bean;
     }

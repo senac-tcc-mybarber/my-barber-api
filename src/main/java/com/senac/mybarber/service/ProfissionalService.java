@@ -1,6 +1,8 @@
 package com.senac.mybarber.service;
 
 import com.senac.mybarber.model.Profissional;
+import com.senac.mybarber.model.Salao;
+import com.senac.mybarber.model.Servico;
 import com.senac.mybarber.repository.ProfissionalRepository;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -64,7 +66,7 @@ public class ProfissionalService {
         return repository.findById(id)
                 .map(record -> {
 
-                    Collection associacao = servicoService.findAllById(servicos);
+                    Collection<Servico> associacao = servicoService.findAllById(servicos);
 
                     record.setServicos(new HashSet<>( associacao));
                     return repository.save(record);
@@ -74,7 +76,7 @@ public class ProfissionalService {
     public Optional<Profissional> associarSalao(Long id, List<Long> saloes) {
         return repository.findById(id)
                 .map(record -> {
-                    Collection associacao = salaoService.findAllById(saloes);
+                    Collection<Salao> associacao = salaoService.findAllById(saloes);
 
                     record.setSaloes(new HashSet<>(associacao));
                     return repository.save(record);

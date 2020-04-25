@@ -1,22 +1,13 @@
 package com.senac.mybarber.service;
 
-import com.senac.mybarber.model.Agendamento;
-import com.senac.mybarber.model.StatusAgendamento;
-import com.senac.mybarber.model.TipoEntidadeOperacaoAgendamento;
-import com.senac.mybarber.model.TipoOperacaoAgendamento;
-import com.senac.mybarber.repository.AgendamentoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
-import java.nio.channels.FileChannel;
-import java.util.Date;
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
-import static com.senac.mybarber.model.StatusAgendamento.*;
-import static java.util.Objects.isNull;
-import static java.util.Objects.nonNull;
+import com.senac.mybarber.model.Agendamento;
+import com.senac.mybarber.repository.AgendamentoRepository;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 @Service
 public class AgendamentoService {

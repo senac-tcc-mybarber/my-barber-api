@@ -17,12 +17,12 @@ public class ClienteController {
     private ClienteService clienteservice;
 
     @GetMapping
-    public List findAll(){
+    public List<Cliente> findAll(){
         return clienteservice.findAll();
     }
 
     @GetMapping(path = {"/{id}"})
-    public ResponseEntity findById(@PathVariable Long id){
+    public ResponseEntity<Cliente> findById(@PathVariable Long id){
         return clienteservice.findById(id)
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());
@@ -39,7 +39,7 @@ public class ClienteController {
     }
 
     @PutMapping(value="/{id}")
-    public ResponseEntity update(@PathVariable("id") Long id, @RequestBody Cliente cliente) {
+    public ResponseEntity<Cliente> update(@PathVariable("id") Long id, @RequestBody Cliente cliente) {
         return clienteservice.update(id, cliente)
                 .map(record -> ResponseEntity.ok().body(record))
                 .orElse(ResponseEntity.notFound().build());

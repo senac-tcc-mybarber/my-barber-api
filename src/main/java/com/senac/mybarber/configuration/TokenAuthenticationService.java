@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
-import com.senac.mybarber.model.Cliente;
 import com.senac.mybarber.model.Pessoa;
 import com.senac.mybarber.model.Profissional;
 import com.senac.mybarber.model.Usuario;
