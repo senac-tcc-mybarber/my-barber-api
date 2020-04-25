@@ -84,7 +84,7 @@ public class Agendamento {
             checkInProfissional = new Date();
         }
 
-        if (status == AGUARDANDO_CLIENTE) {
+        if (status == AGUARDANDO_PROFISSIONAL) {
             status = EM_ANDAMENTO;
         } else {
             status = AGUARDANDO_CLIENTE;
