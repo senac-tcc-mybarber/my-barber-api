@@ -53,4 +53,13 @@ public class AgendamentoService {
         );
     }
 
+    public Optional<Agendamento> concluirAtendimento(Long id) {
+        return agendamentoRepository.findById(id)
+                .map(record -> {
+                    record.concluirAtendimento();
+                    return agendamentoRepository.save(record);
+                }
+        );
+    }
+
 }
