@@ -1,8 +1,6 @@
 package com.senac.mybarber.model;
 
-import static com.senac.mybarber.model.StatusAgendamento.AGUARDANDO_CLIENTE;
-import static com.senac.mybarber.model.StatusAgendamento.AGUARDANDO_PROFISSIONAL;
-import static com.senac.mybarber.model.StatusAgendamento.EM_ANDAMENTO;
+import static com.senac.mybarber.model.StatusAgendamento.*;
 import static java.util.Objects.isNull;
 import static lombok.AccessLevel.PRIVATE;
 
@@ -24,7 +22,6 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @AllArgsConstructor
-@NoArgsConstructor
 @Data
 @Entity
 public class Agendamento {
@@ -67,6 +64,10 @@ public class Agendamento {
     @Setter(PRIVATE)
     private Date finalizacao;
 
+    public Agendamento() {
+        this.status = StatusAgendamento.AGENDADO;
+    }
+
     public void checkInCliente() {
         if(isNull(checkInCliente)) {
             checkInCliente = new Date();
@@ -89,6 +90,14 @@ public class Agendamento {
         } else {
             status = AGUARDANDO_CLIENTE;
         }
+    }
+
+    public void concluirAtendimento() {
+        if (isNull(finalizacao)) {
+            finalizacao = new Date();
+        }
+
+        status = CONCLUIDO;
     }
 }
 
