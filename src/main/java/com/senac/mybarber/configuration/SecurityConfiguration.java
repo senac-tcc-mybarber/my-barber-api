@@ -33,7 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable().authorizeRequests()
-                .antMatchers("/home").permitAll()
+                .antMatchers("/home","/actuator","/actuator/prometheus").permitAll()
                 .antMatchers(HttpMethod.POST, "/authenticate", "/clientes", "/profissionais").permitAll()
                 .anyRequest().authenticated()
                 .and()
