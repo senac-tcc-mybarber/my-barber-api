@@ -46,8 +46,10 @@ public class AgendamentoController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    @PutMapping(path = {"/{id}/finalizacao"})
-    public ResponseEntity<Agendamento> checkoutCliente(@RequestBody final Agendamento agendamento) {
-        return null;
+    @PutMapping(path = {"/{id}/concluir"})
+    public ResponseEntity<Agendamento> concluirAtendimento(@PathVariable("id") final Long id) {
+        return agendamentoService.concluirAtendimento(id)
+                .map(record -> ResponseEntity.ok().body(record))
+                .orElse(ResponseEntity.notFound().build());
     }
 }
