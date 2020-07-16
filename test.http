@@ -113,3 +113,17 @@ Content-Type: application/json
 }
 
 ###
+
+PUT http://localhost:8080/clientes/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+    "email": "jose@gmail.com",
+    "id": 1,
+    "nome": "Jose da Silva",
+    "telefone": "32132132131",
+    "username": "username1"
+}
+
+##
