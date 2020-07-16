@@ -12,6 +12,8 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.lang3.StringUtils;
+
 @Service
 public class ProfissionalService {
 
@@ -49,7 +51,9 @@ public class ProfissionalService {
                     record.setNome(profissional.getNome());
                     record.setEmail(profissional.getEmail());
                     record.setTelefone(profissional.getTelefone());
-                    record.setSenha(profissional.getSenha());
+                    if (StringUtils.isNotBlank(profissional.getSenha())) {
+                        record.setSenha(passwordEncoder.encode(profissional.getSenha()));
+                    }
                     return repository.save(record);
                 });
     }

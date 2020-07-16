@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
+import org.apache.commons.lang3.StringUtils;
+
 @Service
 public class ClienteService {
 
@@ -41,7 +43,9 @@ public class ClienteService {
                     record.setNome(cliente.getNome());
                     record.setEmail(cliente.getEmail());
                     record.setTelefone(cliente.getTelefone());
-                    record.setSenha(cliente.getSenha());
+                    if (StringUtils.isNotBlank(cliente.getSenha())) {
+                        record.setSenha(passwordEncoder.encode(cliente.getSenha()));
+                    }
                     return clienterepository.save(record);
                 });
     }
